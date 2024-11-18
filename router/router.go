@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	"net/http"
 )
 
 func Setup() *gin.Engine {
@@ -16,6 +17,11 @@ func Setup() *gin.Engine {
 	r.NoRoute(eeor.HandleNotFound)
 	//注册静态文件
 	r.Static("/static", "./static")
+
+	r.GET("/api", func(context *gin.Context) {
+
+		context.String(http.StatusOK, "520")
+	})
 
 	//日志系统  LogBackManagement
 
